@@ -36,8 +36,12 @@
   stroke-linejoin: round;
 }
 
-.area:hover > path {
-  filter: brightness(1.18);
+/* Hover only exists with a mouse. On a touch screen it sticks after a tap, and the
+   brightness filter is an expensive effect to apply to a large shape. */
+@media (hover: hover) {
+  .area:hover > path {
+    filter: brightness(1.18);
+  }
 }
 
 .scratch-stroke {
@@ -92,8 +96,10 @@
   vector-effect: non-scaling-stroke;
 }
 
-.park:hover .park-dot {
-  fill: var(--gold);
+@media (hover: hover) {
+  .park:hover .park-dot {
+    fill: var(--gold);
+  }
 }
 
 .park.visited .park-dot {

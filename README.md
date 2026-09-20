@@ -28,13 +28,17 @@ to zoom, drag to pan.
 
 ## Data
 
-The map is plain SVG, projected with `d3-geo`. Nothing is fetched at runtime.
+The map is plain SVG. Nothing is fetched at runtime, and nothing is projected in the
+browser either: `npm run data:map` projects every shape into ready-made SVG paths
+ahead of time (`src/data/map.json`). Doing that on the phone at every page load was
+the main cause of a slow start.
 
 | What | Source | How it gets here |
 | --- | --- | --- |
 | Country shapes | [world-atlas](https://github.com/topojson/world-atlas) 50m (Natural Earth) | npm dependency |
 | US states, Canadian provinces | Natural Earth 50m admin-1, with the Great Lakes cut out using Natural Earth's lakes | `npm run data:regions` writes `src/data/regions.json` |
 | National parks | Wikidata | `npm run data:parks` writes `src/data/parks.json` |
+| Shapes ready to draw | The country, state and park data above | `npm run data:map` writes `src/data/map.json` |
 | State and province flags | Wikimedia Commons | `npm run data:flags` writes `public/flags/regions/*.png` |
 | Park photos and credits | Wikimedia Commons | `npm run data:images` writes `public/parks/*` and `src/data/parkImages.json` |
 
@@ -59,9 +63,9 @@ src/
     SharedMapBanner.tsx   what to do with a map opened from a shared link
     Tooltip.tsx           shared hover tooltip
   hooks/                  useVisited (saved progress), useTileSize (list size)
-  lib/                    geo.ts builds every shape, region and park from the data;
+  lib/                    geo.ts loads the ready-made shapes, regions and parks;
                           shareCode.ts turns progress into a shareable link and back
-  data/                   generated JSON (regions, parks, park photo credits)
+  data/                   generated JSON (map, regions, parks, photo credits, key order)
 scripts/                  the data:* generators above
 ```
 

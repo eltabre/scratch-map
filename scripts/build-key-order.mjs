@@ -6,11 +6,9 @@
  * ones never move or disappear, which keeps every link ever made decoding to the
  * same places. Never reorder or delete entries by hand.
  *
- * Builds the keys the same way src/lib/geo.ts does: countries by ISO id (or name
- * when the id is missing or already used), except the US and Canada, which are
- * marked through their states and provinces; then regions; then parks.
+ * The places are exactly the shapes and parks in src/data/map.json, the same list the
+ * app draws, so run `npm run data:map` first.
  *
- * Reads src/data/regions.json and src/data/parks.json, so run those scripts first.
  * Run with: npm run data:order
  */
 
@@ -18,30 +16,12 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const OUT = 'src/data/keyOrder.json';
-/** Countries drawn as their states / provinces, so never marked directly. */
-const SPLIT = new Set(['840', '124']);
-
-const readJson = async (file) => JSON.parse(await readFile(file, 'utf8'));
-
-const world = await readJson('node_modules/world-atlas/countries-50m.json');
-const regions = await readJson('src/data/regions.json');
-const parks = await readJson('src/data/parks.json');
-
-const current = [];
-const usedIds = new Set();
-for (const g of world.objects.countries.geometries) {
-	const rawId = g.id === undefined ? null : String(g.id);
-	const id = rawId && !usedIds.has(rawId) ? rawId : null;
-	if (id) usedIds.add(id);
-	if (id && SPLIT.has(id)) continue;
-	current.push(id ?? g.properties.name);
-}
-current.push(...regions.objects.regions.geometries.map((g) => g.properties.key));
-current.push(...parks.map((p) => p.key));
+const map = JSON.parse(await readFile('src/data/map.json', 'utf8'));
+const current = [...map.areas.map((a) => a.key), ...map.parks.map((p) => p.key)];
 
 if (new Set(current).size !== current.length) throw new Error('duplicate keys in the current data');
 
-const existing = existsSync(OUT) ? await readJson(OUT) : [];
+const existing = existsSync(OUT) ? JSON.parse(await readFile(OUT, 'utf8')) : [];
 const known = new Set(existing);
 const added = current.filter((key) => !known.has(key));
 const gone = existing.filter((key) => !current.includes(key));

@@ -1,8 +1,8 @@
 import { select } from 'd3-selection'
 import { zoom, zoomIdentity, type ZoomBehavior } from 'd3-zoom'
-import { useEffect, useRef } from 'react'
+import { memo, useEffect, useRef } from 'react'
 import './WorldMap.css'
-import { AREAS, HEIGHT, PARKS, WIDTH, type Area } from '@/lib/geo'
+import { AREAS, HEIGHT, PARKS, WIDTH, type Area, type Park } from '@/lib/geo'
 
 /** Gap between scratch passes, in map units. */
 const PASS_GAP = 5
@@ -30,7 +30,65 @@ function scratchPath({ bounds: [[x0, y0], [x1, y1]] }: Area): string {
   return 'M' + points.join('L')
 }
 
-export default function WorldMap({ visited, scratching, showParks, fill, onToggle, onHover }: Props) {
+interface ShapeProps {
+  area: Area
+  /** Unique per shape, for its scratch mask. */
+  index: number
+  isVisited: boolean
+  isScratching: boolean
+  onToggle: (key: string) => void
+  onHover: (name: string | null) => void
+}
+
+/**
+ * One country, state or province. Memoised so that scratching or hovering one shape
+ * does not redraw the other 300: on a phone that redraw was most of the delay after a tap.
+ */
+const AreaShape = memo(function AreaShape({ area, index, isVisited, isScratching, onToggle, onHover }: ShapeProps) {
+  const maskId = `scratch-${index}`
+  return (
+    <g
+      className="area"
+      onClick={() => onToggle(area.key)}
+      onPointerEnter={() => onHover(area.label)}
+      onPointerLeave={() => onHover(null)}
+    >
+      {isVisited && <path className="area-fill" d={area.d} fill={area.color} />}
+      {(!isVisited || isScratching) && (
+        <path className="area-foil" d={area.d} fill="url(#foil)" mask={isScratching ? `url(#${maskId})` : undefined} />
+      )}
+      {isScratching && (
+        <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width={WIDTH} height={HEIGHT}>
+          <rect width={WIDTH} height={HEIGHT} fill="#fff" />
+          <path className="scratch-stroke" d={scratchPath(area)} pathLength={1} strokeWidth={PASS_GAP * 1.7} />
+        </mask>
+      )}
+    </g>
+  )
+})
+
+interface DotProps {
+  park: Park
+  isVisited: boolean
+  onToggle: (key: string) => void
+  onHover: (name: string | null) => void
+}
+
+const ParkDot = memo(function ParkDot({ park, isVisited, onToggle, onHover }: DotProps) {
+  return (
+    <g
+      className={`park${isVisited ? ' visited' : ''}`}
+      onClick={() => onToggle(park.key)}
+      onPointerEnter={() => onHover(park.name)}
+      onPointerLeave={() => onHover(null)}
+    >
+      <circle className="park-hit" cx={park.x} cy={park.y} />
+      <circle className="park-dot" cx={park.x} cy={park.y} />
+    </g>
+  )
+})
+
+function WorldMap({ visited, scratching, showParks, fill, onToggle, onHover }: Props) {
   const svgRef = useRef<SVGSVGElement>(null)
   const layerRef = useRef<SVGGElement>(null)
   const zoomRef = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null)
@@ -41,11 +99,10 @@ export default function WorldMap({ visited, scratching, showParks, fill, onToggl
       .scaleExtent([1, 12])
       .extent([[0, 0], [WIDTH, HEIGHT]])
       .translateExtent([[0, 0], [WIDTH, HEIGHT]])
-      .on('zoom', (event) => {
-        layerRef.current?.setAttribute('transform', event.transform.toString())
-        // Lets the CSS keep park dots the same size on screen at every zoom.
-        svgRef.current?.style.setProperty('--k', String(event.transform.k))
-      })
+      .on('zoom', (event) => layerRef.current?.setAttribute('transform', event.transform.toString()))
+      // Lets the CSS keep park dots the same size on screen at every zoom. Set once a
+      // gesture ends: changing it on every frame made the browser restyle every dot mid-pinch.
+      .on('end', (event) => svgRef.current?.style.setProperty('--k', String(event.transform.k)))
     svg.call(behavior)
     zoomRef.current = behavior
     return () => {
@@ -78,54 +135,21 @@ export default function WorldMap({ visited, scratching, showParks, fill, onToggl
         </defs>
 
         <g ref={layerRef}>
-          {AREAS.map((area, index) => {
-            const isVisited = visited.has(area.key)
-            const isScratching = scratching.has(area.key)
-            const maskId = `scratch-${index}`
-            return (
-              <g
-                key={area.key}
-                className="area"
-                onClick={() => onToggle(area.key)}
-                onPointerEnter={() => onHover(area.label)}
-                onPointerLeave={() => onHover(null)}
-              >
-                {isVisited && <path className="area-fill" d={area.d} fill={area.color} />}
-                {(!isVisited || isScratching) && (
-                  <path
-                    className="area-foil"
-                    d={area.d}
-                    fill="url(#foil)"
-                    mask={isScratching ? `url(#${maskId})` : undefined}
-                  />
-                )}
-                {isScratching && (
-                  <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width={WIDTH} height={HEIGHT}>
-                    <rect width={WIDTH} height={HEIGHT} fill="#fff" />
-                    <path
-                      className="scratch-stroke"
-                      d={scratchPath(area)}
-                      pathLength={1}
-                      strokeWidth={PASS_GAP * 1.7}
-                    />
-                  </mask>
-                )}
-              </g>
-            )
-          })}
+          {AREAS.map((area, index) => (
+            <AreaShape
+              key={area.key}
+              area={area}
+              index={index}
+              isVisited={visited.has(area.key)}
+              isScratching={scratching.has(area.key)}
+              onToggle={onToggle}
+              onHover={onHover}
+            />
+          ))}
 
           {showParks &&
             PARKS.map((park) => (
-              <g
-                key={park.key}
-                className={`park${visited.has(park.key) ? ' visited' : ''}`}
-                onClick={() => onToggle(park.key)}
-                onPointerEnter={() => onHover(park.name)}
-                onPointerLeave={() => onHover(null)}
-              >
-                <circle className="park-hit" cx={park.x} cy={park.y} />
-                <circle className="park-dot" cx={park.x} cy={park.y} />
-              </g>
+              <ParkDot key={park.key} park={park} isVisited={visited.has(park.key)} onToggle={onToggle} onHover={onHover} />
             ))}
         </g>
       </svg>
@@ -138,3 +162,5 @@ export default function WorldMap({ visited, scratching, showParks, fill, onToggl
     </div>
   )
 }
+
+export default memo(WorldMap)

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState, type CSSProperties } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import './App.css'
 import { COUNTRIES, PARKS, PARK_REGION, REGIONS, isCountryVisited } from '@/lib/geo'
 import ParksTab from '@/components/lists/ParksTab'
@@ -49,24 +49,38 @@ export default function App() {
   // Keys whose foil is still being scratched away on the map.
   const [scratching, setScratching] = useState<ReadonlySet<string>>(new Set())
 
-  function scratch(keys: string[]) {
+  // The latest visited set, for handlers that must keep the same identity between renders.
+  const visitedRef = useRef(visited)
+  useEffect(() => {
+    visitedRef.current = visited
+  }, [visited])
+
+  const scratch = useCallback((keys: string[]) => {
     setScratching((prev) => new Set([...prev, ...keys]))
     setTimeout(() => {
       setScratching((prev) => new Set([...prev].filter((k) => !keys.includes(k))))
     }, SCRATCH_MS)
-  }
+  }, [])
 
-  /** Scratch a place off, or cover it back up. Marking a park also marks its state or province. */
-  function toggle(key: string) {
-    if (visited.has(key)) {
-      set([key], false)
-      return
-    }
-    const region = PARK_REGION[key]
-    const added = [key, ...(region && !visited.has(region) ? [region] : [])]
-    set(added, true)
-    scratch(added)
-  }
+  /**
+   * Scratch a place off, or cover it back up. Marking a park also marks its state or
+   * province. Kept the same function between renders so the memoised map shapes are not
+   * all redrawn on every tap; it reads the current places through a ref.
+   */
+  const toggle = useCallback(
+    (key: string) => {
+      const current = visitedRef.current
+      if (current.has(key)) {
+        set([key], false)
+        return
+      }
+      const region = PARK_REGION[key]
+      const added = [key, ...(region && !current.has(region) ? [region] : [])]
+      set(added, true)
+      scratch(added)
+    },
+    [set, scratch],
+  )
 
   /** Clicking the open tab again hides the lists; clicking any tab while hidden shows them. */
   function selectTab(id: Tab) {

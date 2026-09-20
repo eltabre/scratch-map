@@ -40,8 +40,10 @@
   transition: filter 0.2s;
 }
 
-.flag:hover {
-  filter: grayscale(0.4) brightness(0.85);
+@media (hover: hover) {
+  .flag:hover {
+    filter: grayscale(0.4) brightness(0.85);
+  }
 }
 
 .flag:disabled {
@@ -106,12 +108,14 @@
   transition: filter 0.25s;
 }
 
-.park-tile:hover {
-  transform: translateY(-2px);
-}
+@media (hover: hover) {
+  .park-tile:hover {
+    transform: translateY(-2px);
+  }
 
-.park-tile:hover img {
-  filter: grayscale(0.5) brightness(0.8);
+  .park-tile:hover img {
+    filter: grayscale(0.5) brightness(0.8);
+  }
 }
 
 .park-tile.visited {
@@ -173,4 +177,23 @@
 
 .credits a:hover {
   color: var(--gold);
+}
+
+/*
+ * On touch screens dim unvisited flags and photos with plain opacity instead of a
+ * greyscale filter. Filtering hundreds of images while scrolling is slow on phones;
+ * opacity is handled by the GPU for free.
+ */
+@media (pointer: coarse) {
+  .flag,
+  .park-tile img {
+    filter: none;
+    opacity: 0.4;
+    transition: none;
+  }
+
+  .flag.visited,
+  .park-tile.visited img {
+    opacity: 1;
+  }
 }
