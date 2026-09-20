@@ -1,0 +1,14 @@
+/* The shared hover tooltip (see Tooltip.tsx). */
+.tooltip {
+  position: fixed;
+  z-index: 20;
+  padding: 4px 9px;
+  border: 1px solid #2c3037;
+  border-radius: 6px;
+  background: #1b1e23;
+  color: var(--text);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}

@@ -1,0 +1,890 @@
+[
+	{
+		"key": "park:Q337396",
+		"name": "Acadia National Park",
+		"country": "US",
+		"lat": 44.35,
+		"lon": -68.217,
+		"region": "US-ME"
+	},
+	{
+		"key": "park:Q4293399",
+		"name": "Akami-Uapishkᵘ-KakKasuak-Mealy Mountains National Park Reserve",
+		"country": "CA",
+		"lat": 53.4,
+		"lon": -59.367,
+		"region": "CA-NL"
+	},
+	{
+		"key": "park:Q223969",
+		"name": "Arches National Park",
+		"country": "US",
+		"lat": 38.728,
+		"lon": -109.54,
+		"region": "US-UT"
+	},
+	{
+		"key": "park:Q771612",
+		"name": "Aulavik National Park",
+		"country": "CA",
+		"lat": 73.7,
+		"lon": -119.919,
+		"region": "CA-NT"
+	},
+	{
+		"key": "park:Q789743",
+		"name": "Auyuittuq National Park",
+		"country": "CA",
+		"lat": 67.5,
+		"lon": -66,
+		"region": "CA-NU"
+	},
+	{
+		"key": "park:Q306216",
+		"name": "Badlands National Park",
+		"country": "US",
+		"lat": 43.75,
+		"lon": -102.5,
+		"region": "US-SD"
+	},
+	{
+		"key": "park:Q41858",
+		"name": "Banff National Park",
+		"country": "CA",
+		"lat": 51.167,
+		"lon": -115.55,
+		"region": "CA-AB"
+	},
+	{
+		"key": "park:Q1427197",
+		"name": "Big Bend National Park",
+		"country": "US",
+		"lat": 29.25,
+		"lon": -103.25,
+		"region": "US-TX"
+	},
+	{
+		"key": "park:Q866080",
+		"name": "Biscayne National Park",
+		"country": "US",
+		"lat": 25.502,
+		"lon": -80.181,
+		"region": "US-FL"
+	},
+	{
+		"key": "park:Q305880",
+		"name": "Black Canyon of the Gunnison National Park",
+		"country": "US",
+		"lat": 38.58,
+		"lon": -107.728,
+		"region": "US-CO"
+	},
+	{
+		"key": "park:Q991459",
+		"name": "Bruce Peninsula National Park",
+		"country": "CA",
+		"lat": 45.239,
+		"lon": -81.614,
+		"region": "CA-ON"
+	},
+	{
+		"key": "park:Q219562",
+		"name": "Bryce Canyon National Park",
+		"country": "US",
+		"lat": 37.64,
+		"lon": -112.17,
+		"region": "US-UT"
+	},
+	{
+		"key": "park:Q541856",
+		"name": "Canyonlands National Park",
+		"country": "US",
+		"lat": 38.167,
+		"lon": -109.76,
+		"region": "US-UT"
+	},
+	{
+		"key": "park:Q253517",
+		"name": "Cape Breton Highlands National Park",
+		"country": "CA",
+		"lat": 46.717,
+		"lon": -60.66,
+		"region": "CA-NS"
+	},
+	{
+		"key": "park:Q129902",
+		"name": "Capitol Reef National Park",
+		"country": "US",
+		"lat": 38.2,
+		"lon": -111.167,
+		"region": "US-UT"
+	},
+	{
+		"key": "park:Q273195",
+		"name": "Carlsbad Caverns National Park",
+		"country": "US",
+		"lat": 32.175,
+		"lon": -104.444,
+		"region": "US-NM"
+	},
+	{
+		"key": "park:Q306193",
+		"name": "Channel Islands National Park",
+		"country": "US",
+		"lat": 33.66,
+		"lon": -119.64,
+		"region": "US-CA"
+	},
+	{
+		"key": "park:Q175688",
+		"name": "Congaree National Park",
+		"country": "US",
+		"lat": 33.783,
+		"lon": -80.783,
+		"region": "US-SC"
+	},
+	{
+		"key": "park:Q239304",
+		"name": "Crater Lake National Park",
+		"country": "US",
+		"lat": 42.912,
+		"lon": -122.148,
+		"region": "US-OR"
+	},
+	{
+		"key": "park:Q152820",
+		"name": "Cuyahoga Valley National Park",
+		"country": "US",
+		"lat": 41.242,
+		"lon": -81.55,
+		"region": "US-OH"
+	},
+	{
+		"key": "park:Q242111",
+		"name": "Death Valley National Park",
+		"country": "US",
+		"lat": 36.45,
+		"lon": -116.85,
+		"region": "US-CA"
+	},
+	{
+		"key": "park:Q217136",
+		"name": "Denali National Park and Preserve",
+		"country": "US",
+		"lat": 63.2,
+		"lon": -150.3,
+		"region": "US-AK"
+	},
+	{
+		"key": "park:Q1143655",
+		"name": "Dry Tortugas National Park",
+		"country": "US",
+		"lat": 24.629,
+		"lon": -82.873,
+		"region": "US-FL"
+	},
+	{
+		"key": "park:Q1331433",
+		"name": "Elk Island National Park",
+		"country": "CA",
+		"lat": 53.614,
+		"lon": -112.866,
+		"region": "CA-AB"
+	},
+	{
+		"key": "park:Q274131",
+		"name": "Everglades National Park",
+		"country": "US",
+		"lat": 25.313,
+		"lon": -80.688,
+		"region": "US-FL"
+	},
+	{
+		"key": "park:Q1437338",
+		"name": "Forillon National Park",
+		"country": "CA",
+		"lat": 48.9,
+		"lon": -64.35,
+		"region": "CA-QC"
+	},
+	{
+		"key": "park:Q1474238",
+		"name": "Fundy National Park",
+		"country": "CA",
+		"lat": 45.595,
+		"lon": -64.954,
+		"region": "CA-NB"
+	},
+	{
+		"key": "park:Q605657",
+		"name": "Gates of the Arctic National Park and Preserve",
+		"country": "US",
+		"lat": 67.783,
+		"lon": -153.3,
+		"region": "US-AK"
+	},
+	{
+		"key": "park:Q45234",
+		"name": "Gateway Arch National Park",
+		"country": "US",
+		"lat": 38.625,
+		"lon": -90.185,
+		"region": "US-IL"
+	},
+	{
+		"key": "park:Q583518",
+		"name": "Georgian Bay Islands National Park",
+		"country": "CA",
+		"lat": 44.878,
+		"lon": -79.875,
+		"region": "CA-ON"
+	},
+	{
+		"key": "park:Q261577",
+		"name": "Glacier Bay National Park and Preserve",
+		"country": "US",
+		"lat": 58.7,
+		"lon": -137,
+		"region": "US-AK"
+	},
+	{
+		"key": "park:Q373567",
+		"name": "Glacier National Park",
+		"country": "US",
+		"lat": 48.755,
+		"lon": -113.8,
+		"region": "US-MT"
+	},
+	{
+		"key": "park:Q1161253",
+		"name": "Glacier National Park",
+		"country": "CA",
+		"lat": 51.3,
+		"lon": -117.519,
+		"region": "CA-BC"
+	},
+	{
+		"key": "park:Q220289",
+		"name": "Grand Canyon National Park",
+		"country": "US",
+		"lat": 36.055,
+		"lon": -112.122,
+		"region": "US-AZ"
+	},
+	{
+		"key": "park:Q222695",
+		"name": "Grand Teton National Park",
+		"country": "US",
+		"lat": 43.833,
+		"lon": -110.701,
+		"region": "US-WY"
+	},
+	{
+		"key": "park:Q1543598",
+		"name": "Grasslands National Park",
+		"country": "CA",
+		"lat": 49.15,
+		"lon": -107.51,
+		"region": "CA-SK"
+	},
+	{
+		"key": "park:Q1137657",
+		"name": "Great Basin National Park",
+		"country": "US",
+		"lat": 39.006,
+		"lon": -114.22,
+		"region": "US-NV"
+	},
+	{
+		"key": "park:Q609097",
+		"name": "Great Sand Dunes National Park and Preserve",
+		"country": "US",
+		"lat": 37.834,
+		"lon": -105.497,
+		"region": "US-CO"
+	},
+	{
+		"key": "park:Q464004",
+		"name": "Great Smoky Mountains National Park",
+		"country": "US",
+		"lat": 35.611,
+		"lon": -83.425,
+		"region": "US-NC"
+	},
+	{
+		"key": "park:Q257598",
+		"name": "Gros Morne National Park",
+		"country": "CA",
+		"lat": 49.689,
+		"lon": -57.738,
+		"region": "CA-NL"
+	},
+	{
+		"key": "park:Q370501",
+		"name": "Guadalupe Mountains National Park",
+		"country": "US",
+		"lat": 31.917,
+		"lon": -104.867,
+		"region": "US-TX"
+	},
+	{
+		"key": "park:Q775595",
+		"name": "Gulf Islands National Park Reserve",
+		"country": "CA",
+		"lat": 48.851,
+		"lon": -123.448,
+		"region": "CA-BC"
+	},
+	{
+		"key": "park:Q862285",
+		"name": "Gwaii Haanas National Park Reserve",
+		"country": "CA",
+		"lat": 52.389,
+		"lon": -131.471,
+		"region": "CA-BC"
+	},
+	{
+		"key": "park:Q1137640",
+		"name": "Haleakalā National Park",
+		"country": "US",
+		"lat": 20.72,
+		"lon": -156.155,
+		"region": "US-HI"
+	},
+	{
+		"key": "park:Q205952",
+		"name": "Hawaiʻi Volcanoes National Park",
+		"country": "US",
+		"lat": 19.401,
+		"lon": -155.124,
+		"region": "US-HI"
+	},
+	{
+		"key": "park:Q1143416",
+		"name": "Hot Springs National Park",
+		"country": "US",
+		"lat": 34.514,
+		"lon": -93.054,
+		"region": "US-AR"
+	},
+	{
+		"key": "park:Q6023179",
+		"name": "Indiana Dunes National Park",
+		"country": "US",
+		"lat": 41.648,
+		"lon": -87.108,
+		"region": "US-IN"
+	},
+	{
+		"key": "park:Q163515",
+		"name": "Isle Royale National Park",
+		"country": "US",
+		"lat": 47.996,
+		"lon": -88.909,
+		"region": "US-MI"
+	},
+	{
+		"key": "park:Q200590",
+		"name": "Ivvavik National Park",
+		"country": "CA",
+		"lat": 69.52,
+		"lon": -139.525,
+		"region": "CA-YT"
+	},
+	{
+		"key": "park:Q503429",
+		"name": "Jasper National Park",
+		"country": "CA",
+		"lat": 52.8,
+		"lon": -117.9,
+		"region": "CA-AB"
+	},
+	{
+		"key": "park:Q735202",
+		"name": "Joshua Tree National Park",
+		"country": "US",
+		"lat": 33.748,
+		"lon": -115.819,
+		"region": "US-CA"
+	},
+	{
+		"key": "park:Q609902",
+		"name": "Katmai National Park and Preserve",
+		"country": "US",
+		"lat": 58.5,
+		"lon": -155,
+		"region": "US-AK"
+	},
+	{
+		"key": "park:Q795176",
+		"name": "Kejimkujik National Park",
+		"country": "CA",
+		"lat": 44.399,
+		"lon": -65.218,
+		"region": "CA-NS"
+	},
+	{
+		"key": "park:Q841503",
+		"name": "Kenai Fjords National Park",
+		"country": "US",
+		"lat": 59.918,
+		"lon": -149.988,
+		"region": "US-AK"
+	},
+	{
+		"key": "park:Q936623",
+		"name": "Kings Canyon National Park",
+		"country": "US",
+		"lat": 36.789,
+		"lon": -118.673,
+		"region": "US-CA"
+	},
+	{
+		"key": "park:Q738582",
+		"name": "Kluane National Park and Reserve",
+		"country": "CA",
+		"lat": 60.454,
+		"lon": -137.829,
+		"region": "CA-YT"
+	},
+	{
+		"key": "park:Q836264",
+		"name": "Kobuk Valley National Park",
+		"country": "US",
+		"lat": 67.353,
+		"lon": -159.199,
+		"region": "US-AK"
+	},
+	{
+		"key": "park:Q903323",
+		"name": "Kootenay National Park",
+		"country": "CA",
+		"lat": 50.883,
+		"lon": -116.049,
+		"region": "CA-BC"
+	},
+	{
+		"key": "park:Q862260",
+		"name": "Kouchibouguac National Park",
+		"country": "CA",
+		"lat": 46.85,
+		"lon": -64.967,
+		"region": "CA-NB"
+	},
+	{
+		"key": "park:Q1798539",
+		"name": "La Mauricie National Park",
+		"country": "CA",
+		"lat": 46.8,
+		"lon": -72.967,
+		"region": "CA-QC"
+	},
+	{
+		"key": "park:Q712296",
+		"name": "Lake Clark National Park and Preserve",
+		"country": "US",
+		"lat": 60.967,
+		"lon": -153.417,
+		"region": "US-AK"
+	},
+	{
+		"key": "park:Q1163542",
+		"name": "Lassen Volcanic National Park",
+		"country": "US",
+		"lat": 40.498,
+		"lon": -121.427,
+		"region": "US-CA"
+	},
+	{
+		"key": "park:Q242681",
+		"name": "Mammoth Cave National Park",
+		"country": "US",
+		"lat": 37.187,
+		"lon": -86.101,
+		"region": "US-KY"
+	},
+	{
+		"key": "park:Q237128",
+		"name": "Mesa Verde National Park",
+		"country": "US",
+		"lat": 37.26,
+		"lon": -108.494,
+		"region": "US-CO"
+	},
+	{
+		"key": "park:Q862157",
+		"name": "Mingan Archipelago National Park Reserve",
+		"country": "CA",
+		"lat": 50.2,
+		"lon": -63.829,
+		"region": "CA-QC"
+	},
+	{
+		"key": "park:Q944329",
+		"name": "Mount Rainier National Park",
+		"country": "US",
+		"lat": 46.85,
+		"lon": -121.75,
+		"region": "US-WA"
+	},
+	{
+		"key": "park:Q862265",
+		"name": "Mount Revelstoke National Park",
+		"country": "CA",
+		"lat": 51.086,
+		"lon": -118.066,
+		"region": "CA-BC"
+	},
+	{
+		"key": "park:Q861957",
+		"name": "Nááts'įhch'oh National Park Reserve",
+		"country": "CA",
+		"lat": 62.25,
+		"lon": -128.25,
+		"region": "CA-NT"
+	},
+	{
+		"key": "park:Q391391",
+		"name": "Nahanni National Park Reserve",
+		"country": "CA",
+		"lat": 61.597,
+		"lon": -125.852,
+		"region": "CA-NT"
+	},
+	{
+		"key": "park:Q843075",
+		"name": "National Park of American Samoa",
+		"country": "US",
+		"lat": -14.258,
+		"lon": -170.683,
+		"region": null
+	},
+	{
+		"key": "park:Q7011245",
+		"name": "New River Gorge National Park and Preserve",
+		"country": "US",
+		"lat": 37.961,
+		"lon": -81.082,
+		"region": "US-WV"
+	},
+	{
+		"key": "park:Q1163799",
+		"name": "North Cascades National Park",
+		"country": "US",
+		"lat": 48.483,
+		"lon": -120.911,
+		"region": "US-WA"
+	},
+	{
+		"key": "park:Q372093",
+		"name": "Olympic National Park",
+		"country": "US",
+		"lat": 47.7,
+		"lon": -123.75,
+		"region": "US-WA"
+	},
+	{
+		"key": "park:Q1756401",
+		"name": "Pacific Rim National Park Reserve",
+		"country": "CA",
+		"lat": 48.983,
+		"lon": -125.667,
+		"region": "CA-BC"
+	},
+	{
+		"key": "park:Q305949",
+		"name": "Petrified Forest National Park",
+		"country": "US",
+		"lat": 35.088,
+		"lon": -109.806,
+		"region": "US-AZ"
+	},
+	{
+		"key": "park:Q1783768",
+		"name": "Pinnacles National Park",
+		"country": "US",
+		"lat": 36.487,
+		"lon": -121.167,
+		"region": "US-CA"
+	},
+	{
+		"key": "park:Q127315453",
+		"name": "Pituamkek National Park Reserve",
+		"country": "CA",
+		"lat": 46.612,
+		"lon": -63.788,
+		"region": "CA-PE"
+	},
+	{
+		"key": "park:Q1153938",
+		"name": "Point Pelee National Park",
+		"country": "CA",
+		"lat": 41.967,
+		"lon": -82.517,
+		"region": "CA-ON"
+	},
+	{
+		"key": "park:Q1122878",
+		"name": "Prince Albert National Park",
+		"country": "CA",
+		"lat": 53.963,
+		"lon": -106.37,
+		"region": "CA-SK"
+	},
+	{
+		"key": "park:Q1314367",
+		"name": "Prince Edward Island National Park",
+		"country": "CA",
+		"lat": 46.417,
+		"lon": -63.075,
+		"region": "CA-PE"
+	},
+	{
+		"key": "park:Q283482",
+		"name": "Pukaskwa National Park",
+		"country": "CA",
+		"lat": 48.25,
+		"lon": -85.917,
+		"region": "CA-ON"
+	},
+	{
+		"key": "park:Q18167998",
+		"name": "Qausuittuq National Park",
+		"country": "CA",
+		"lat": 76.124,
+		"lon": -101.031,
+		"region": "CA-NU"
+	},
+	{
+		"key": "park:Q1327341",
+		"name": "Quttinirpaaq National Park",
+		"country": "CA",
+		"lat": 82.217,
+		"lon": -72.217,
+		"region": "CA-NU"
+	},
+	{
+		"key": "park:Q191824",
+		"name": "Redwood National Park",
+		"country": "US",
+		"lat": 41.529,
+		"lon": -124.058,
+		"region": "US-CA"
+	},
+	{
+		"key": "park:Q795190",
+		"name": "Riding Mountain National Park",
+		"country": "CA",
+		"lat": 50.864,
+		"lon": -100.036,
+		"region": "CA-MB"
+	},
+	{
+		"key": "park:Q777183",
+		"name": "Rocky Mountain National Park",
+		"country": "US",
+		"lat": 40.35,
+		"lon": -105.683,
+		"region": "US-CO"
+	},
+	{
+		"key": "park:Q4133141",
+		"name": "Sable Island National Park Reserve",
+		"country": "CA",
+		"lat": 43.935,
+		"lon": -59.907,
+		"region": "CA-NS"
+	},
+	{
+		"key": "park:Q676206",
+		"name": "Saguaro National Park",
+		"country": "US",
+		"lat": 32.202,
+		"lon": -110.611,
+		"region": "US-AZ"
+	},
+	{
+		"key": "park:Q152660",
+		"name": "Sequoia National Park",
+		"country": "US",
+		"lat": 36.565,
+		"lon": -118.773,
+		"region": "US-CA"
+	},
+	{
+		"key": "park:Q1137401",
+		"name": "Shenandoah National Park",
+		"country": "US",
+		"lat": 38.533,
+		"lon": -78.35,
+		"region": "US-VA"
+	},
+	{
+		"key": "park:Q795332",
+		"name": "Sirmilik National Park",
+		"country": "CA",
+		"lat": 72.833,
+		"lon": -80.583,
+		"region": "CA-NU"
+	},
+	{
+		"key": "park:Q1422693",
+		"name": "Terra Nova National Park",
+		"country": "CA",
+		"lat": 48.531,
+		"lon": -53.928,
+		"region": "CA-NL"
+	},
+	{
+		"key": "park:Q724310",
+		"name": "Thaidene Nëné National Park Reserve",
+		"country": "CA",
+		"lat": 62.708,
+		"lon": -108.634,
+		"region": "CA-NT"
+	},
+	{
+		"key": "park:Q1137669",
+		"name": "Theodore Roosevelt National Park",
+		"country": "US",
+		"lat": 46.967,
+		"lon": -103.45,
+		"region": "US-ND"
+	},
+	{
+		"key": "park:Q636823",
+		"name": "Thousand Islands National Park",
+		"country": "CA",
+		"lat": 44.352,
+		"lon": -75.955,
+		"region": "CA-ON"
+	},
+	{
+		"key": "park:Q152688",
+		"name": "Torngat Mountains National Park",
+		"country": "CA",
+		"lat": 59.436,
+		"lon": -63.696,
+		"region": "CA-NL"
+	},
+	{
+		"key": "park:Q597959",
+		"name": "Tuktut Nogait National Park",
+		"country": "CA",
+		"lat": 68.819,
+		"lon": -121.749,
+		"region": "CA-NT"
+	},
+	{
+		"key": "park:Q862318",
+		"name": "Ukkusiksalik National Park",
+		"country": "CA",
+		"lat": 65.499,
+		"lon": -87.895,
+		"region": "CA-NU"
+	},
+	{
+		"key": "park:Q491005",
+		"name": "Virgin Islands National Park",
+		"country": "US",
+		"lat": 18.338,
+		"lon": -64.733,
+		"region": null
+	},
+	{
+		"key": "park:Q1368788",
+		"name": "Voyageurs National Park",
+		"country": "US",
+		"lat": 48.5,
+		"lon": -92.883,
+		"region": "US-MN"
+	},
+	{
+		"key": "park:Q862271",
+		"name": "Vuntut National Park",
+		"country": "CA",
+		"lat": 68.307,
+		"lon": -140.048,
+		"region": "CA-YT"
+	},
+	{
+		"key": "park:Q1638019",
+		"name": "Wapusk National Park",
+		"country": "CA",
+		"lat": 57.774,
+		"lon": -93.371,
+		"region": "CA-MB"
+	},
+	{
+		"key": "park:Q902778",
+		"name": "Waterton Lakes National Park",
+		"country": "CA",
+		"lat": 49.05,
+		"lon": -113.933,
+		"region": "CA-AB"
+	},
+	{
+		"key": "park:Q1200164",
+		"name": "White Sands National Park",
+		"country": "US",
+		"lat": 32.78,
+		"lon": -106.172,
+		"region": "US-NM"
+	},
+	{
+		"key": "park:Q1334313",
+		"name": "Wind Cave National Park",
+		"country": "US",
+		"lat": 43.556,
+		"lon": -103.479,
+		"region": "US-SD"
+	},
+	{
+		"key": "park:Q391338",
+		"name": "Wood Buffalo National Park",
+		"country": "CA",
+		"lat": 59.383,
+		"lon": -112.983,
+		"region": "CA-AB"
+	},
+	{
+		"key": "park:Q748597",
+		"name": "Wrangell–St. Elias National Park and Preserve",
+		"country": "US",
+		"lat": 61.435,
+		"lon": -142.954,
+		"region": "US-AK"
+	},
+	{
+		"key": "park:Q351",
+		"name": "Yellowstone National Park",
+		"country": "US",
+		"lat": 44.6,
+		"lon": -110.5,
+		"region": "US-WY"
+	},
+	{
+		"key": "park:Q828404",
+		"name": "Yoho National Park",
+		"country": "CA",
+		"lat": 51.395,
+		"lon": -116.487,
+		"region": "CA-BC"
+	},
+	{
+		"key": "park:Q180402",
+		"name": "Yosemite National Park",
+		"country": "US",
+		"lat": 37.742,
+		"lon": -119.537,
+		"region": "US-CA"
+	},
+	{
+		"key": "park:Q205325",
+		"name": "Zion National Park",
+		"country": "US",
+		"lat": 37.203,
+		"lon": -112.988,
+		"region": "US-UT"
+	}
+]

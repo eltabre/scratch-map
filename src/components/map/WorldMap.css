@@ -1,0 +1,115 @@
+/* The map panel. */
+
+.map {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid #23262c;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* With the lists hidden the map fills what is left of the screen below the header. */
+.map.fill {
+  height: max(360px, calc(100dvh - 190px));
+}
+
+.map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: grab;
+}
+
+.map.fill svg {
+  height: 100%;
+}
+
+.area,
+.park {
+  cursor: pointer;
+}
+
+.area > path {
+  stroke: #0e0f12;
+  stroke-width: 0.6px;
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+}
+
+.area:hover > path {
+  filter: brightness(1.18);
+}
+
+.scratch-stroke {
+  fill: none;
+  stroke: #000;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: scratch 0.7s ease-out forwards;
+}
+
+@keyframes scratch {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.zoom-controls {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.zoom-controls button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #2c3037;
+  border-radius: 8px;
+  background: #1b1e23;
+  cursor: pointer;
+}
+
+.zoom-controls button:hover {
+  border-color: var(--gold);
+}
+
+/* Park dots keep the same size on screen at every zoom; --k is set by WorldMap. */
+.park-hit {
+  r: calc(9px / var(--k, 1));
+  fill: transparent;
+}
+
+.park-dot {
+  r: calc(3.6px / var(--k, 1));
+  fill: #15181d;
+  stroke: var(--gold);
+  stroke-width: 1.5px;
+  vector-effect: non-scaling-stroke;
+}
+
+.park:hover .park-dot {
+  fill: var(--gold);
+}
+
+.park.visited .park-dot {
+  fill: #3ddc84;
+  stroke: #fff;
+  animation: pop 0.35s ease-out;
+}
+
+@keyframes pop {
+  50% {
+    r: calc(6.5px / var(--k, 1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scratch-stroke {
+    animation-duration: 0.01s;
+  }
+}

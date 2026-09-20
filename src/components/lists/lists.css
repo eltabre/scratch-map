@@ -1,0 +1,176 @@
+/* Lists under the map: flag grids and park tiles. */
+
+.list-groups {
+  display: grid;
+  gap: 24px;
+}
+
+.list-heading {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.list-heading span {
+  color: var(--gold);
+}
+
+.flags {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(34px * var(--tile-scale, 1)), 1fr));
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flag {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid #2c3037;
+  border-radius: 3px;
+  background: none;
+  line-height: 0;
+  overflow: hidden;
+  cursor: pointer;
+  filter: grayscale(1) brightness(0.55);
+  transition: filter 0.2s;
+}
+
+.flag:hover {
+  filter: grayscale(0.4) brightness(0.85);
+}
+
+.flag:disabled {
+  cursor: default;
+}
+
+.flag.visited {
+  border-color: var(--gold);
+  filter: none;
+}
+
+.flag svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Region flags are a little larger than the country flags: there are fewer of them. */
+.region-flags {
+  grid-template-columns: repeat(auto-fill, minmax(calc(56px * var(--tile-scale, 1)), 1fr));
+  gap: 8px;
+}
+
+.flag img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* Park tiles: arched photo badges. */
+
+.park-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(112px * var(--tile-scale, 1)), 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.park-tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border: 2px solid #2c3037;
+  border-radius: 50% 50% 10px 10px / 34% 34% 10px 10px;
+  background: #1b1e23;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.park-tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) brightness(0.5);
+  transition: filter 0.25s;
+}
+
+.park-tile:hover {
+  transform: translateY(-2px);
+}
+
+.park-tile:hover img {
+  filter: grayscale(0.5) brightness(0.8);
+}
+
+.park-tile.visited {
+  border-color: var(--gold);
+}
+
+.park-tile.visited img {
+  filter: none;
+}
+
+.park-tile-label {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  gap: 2px;
+  padding: 28px 4px 9px;
+  background: linear-gradient(transparent, rgba(8, 9, 12, 0.92) 55%);
+  color: var(--text);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.park-tile-label strong {
+  font-size: clamp(0.5rem, calc(0.72rem * var(--tile-scale, 1)), 1.1rem);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.park-tile-label small {
+  color: var(--gold);
+  font-size: clamp(0.46rem, calc(0.62rem * var(--tile-scale, 1)), 0.95rem);
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
+}
+
+/* Photo credits */
+
+.credits {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.credits summary {
+  cursor: pointer;
+}
+
+.credits ul {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.credits a {
+  color: inherit;
+}
+
+.credits a:hover {
+  color: var(--gold);
+}
