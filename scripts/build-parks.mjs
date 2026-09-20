@@ -31,16 +31,16 @@ const EXCLUDED = new Set(['Buffalo National Park']);
 const DUPLICATE_ITEMS = new Set(['Q49482738', 'Q49495619']);
 const MISSING_US_ITEMS = ['Q712296', 'Q7011245'];
 /**
- * Parks on islands, the coast or the Great Lakes whose coordinate falls outside
- * the region shapes (which have the lakes cut out). American Samoa and the
- * Virgin Islands are territories, not states, so they have no region at all.
+ * Parks whose coordinate falls outside the region shapes (islands and the coast) or
+ * on the wrong side of a border (Thousand Islands is in the St. Lawrence River, where
+ * the Ontario–New York line runs). American Samoa and the Virgin Islands are
+ * territories, not states, so they have no region at all.
  */
 const REGION_OVERRIDES = {
 	'Biscayne National Park': 'US-FL',
 	'Channel Islands National Park': 'US-CA',
 	'Dry Tortugas National Park': 'US-FL',
 	'Fundy National Park': 'CA-NB',
-	'Georgian Bay Islands National Park': 'CA-ON',
 	'Gulf Islands National Park Reserve': 'CA-BC',
 	'Mingan Archipelago National Park Reserve': 'CA-QC',
 	'Pacific Rim National Park Reserve': 'CA-BC',

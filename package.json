@@ -37,7 +37,6 @@
     "d3-geo": "^3.1.1",
     "i18n-iso-countries": "^7.14.0",
     "oxlint": "^1.81.0",
-    "polygon-clipping": "^0.15.7",
     "topojson-client": "^3.1.0",
     "topojson-server": "^3.0.1",
     "topojson-simplify": "^3.0.3",

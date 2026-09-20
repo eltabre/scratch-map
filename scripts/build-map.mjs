@@ -9,15 +9,28 @@
  * Reads world-atlas (countries), src/data/regions.json and src/data/parks.json, so
  * run `npm run data:regions` and `npm run data:parks` first.
  *
+ * It also draws the Great Lakes. Natural Earth's state and province borders follow
+ * legal jurisdiction out into the lakes (Michigan swallows three of them), so the
+ * lakes are painted over the regions, in the map's background colour, as one extra
+ * shape. The regions themselves are left exactly as they are: cutting the lakes out
+ * of the polygons instead thinned the points along other borders and opened gaps
+ * between neighbouring provinces.
+ *
  * Run with: npm run data:map
  */
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import nodePath from 'node:path';
 import { geoNaturalEarth1, geoPath } from 'd3-geo';
 import isoCountries from 'i18n-iso-countries';
 import { feature, neighbors } from 'topojson-client';
 
 const OUT = 'src/data/map.json';
+const LAKES_URL =
+	'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_lakes.geojson';
+const LAKES_CACHE = 'node_modules/.cache/ne_50m_lakes.geojson';
+const GREAT_LAKES = ['Lake Superior', 'Lake Michigan', 'Lake Huron', 'Lake Erie', 'Lake Ontario', 'Lake Saint Clair'];
 const WIDTH = 960;
 const HEIGHT = 500;
 /** Decimal places in the path data. 1 is 0.05 of a map unit, about half a pixel at the deepest zoom. */
@@ -32,6 +45,18 @@ const COUNTRY_LABEL = { US: 'USA', CA: 'Canada' };
 const PALETTE = ['#e4572e', '#d6336c', '#8a6fdf', '#4c6ef5', '#4aa3df', '#2fb5a6', '#7bc950', '#f78fb3'];
 
 const readJson = async (file) => JSON.parse(await readFile(file, 'utf8'));
+
+/** Download a file once, then read it from the cache on later runs. */
+async function cached(url, file) {
+	if (!existsSync(file)) {
+		const response = await fetch(url);
+		if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
+		await mkdir(nodePath.dirname(file), { recursive: true });
+		await writeFile(file, Buffer.from(await response.arrayBuffer()));
+	}
+	return readJson(file);
+}
+
 const world = await readJson('node_modules/world-atlas/countries-50m.json');
 const regionsTopology = await readJson('src/data/regions.json');
 const parksData = await readJson('src/data/parks.json');
@@ -132,9 +157,13 @@ const parks = parksData.flatMap((p) => {
 	];
 });
 
+const lakeFeatures = (await cached(LAKES_URL, LAKES_CACHE)).features.filter((f) => GREAT_LAKES.includes(f.properties.name));
+if (lakeFeatures.length !== GREAT_LAKES.length) throw new Error(`expected ${GREAT_LAKES.length} Great Lakes, found ${lakeFeatures.length}`);
+const lakes = lakeFeatures.map((f) => path(f)).join('');
+
 const keys = [...areas.map((a) => a.key), ...parks.map((p) => p.key)];
 if (new Set(keys).size !== keys.length) throw new Error('duplicate keys in the map data');
 
-const json = JSON.stringify({ width: WIDTH, height: HEIGHT, areas, countries, regions, parks });
+const json = JSON.stringify({ width: WIDTH, height: HEIGHT, areas, lakes, countries, regions, parks });
 await writeFile(OUT, json);
 console.log(`  ${areas.length} shapes, ${parks.length} parks, ${countries.length} countries  ${(json.length / 1024).toFixed(0)} KB -> ${OUT}`);

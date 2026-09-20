@@ -60,6 +60,11 @@
   }
 }
 
+.lakes {
+  /* The same colour as the panel behind the map, so the lakes read as water. */
+  fill: var(--panel);
+}
+
 .zoom-controls {
   position: absolute;
   right: 10px;

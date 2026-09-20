@@ -2,7 +2,7 @@ import { select } from 'd3-selection'
 import { zoom, zoomIdentity, type ZoomBehavior } from 'd3-zoom'
 import { memo, useEffect, useRef } from 'react'
 import './WorldMap.css'
-import { AREAS, HEIGHT, PARKS, WIDTH, type Area, type Park } from '@/lib/geo'
+import { AREAS, HEIGHT, LAKES, PARKS, WIDTH, type Area, type Park } from '@/lib/geo'
 
 /** Gap between scratch passes, in map units. */
 const PASS_GAP = 5
@@ -146,6 +146,9 @@ function WorldMap({ visited, scratching, showParks, fill, onToggle, onHover }: P
               onHover={onHover}
             />
           ))}
+
+          {/* The Great Lakes, painted over the states and provinces whose borders run out into them. */}
+          <path className="lakes" d={LAKES} />
 
           {showParks &&
             PARKS.map((park) => (

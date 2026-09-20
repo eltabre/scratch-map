@@ -55,6 +55,8 @@ export interface Park {
 }
 
 export const AREAS = map.areas as unknown as Area[]
+/** The Great Lakes as one SVG path, painted over the shapes that run out across them. */
+export const LAKES: string = map.lakes
 export const COUNTRIES = map.countries as unknown as Country[]
 export const REGIONS = map.regions as unknown as Region[]
 export const PARKS = map.parks as unknown as Park[]

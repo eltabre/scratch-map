@@ -36,9 +36,9 @@ the main cause of a slow start.
 | What | Source | How it gets here |
 | --- | --- | --- |
 | Country shapes | [world-atlas](https://github.com/topojson/world-atlas) 50m (Natural Earth) | npm dependency |
-| US states, Canadian provinces | Natural Earth 50m admin-1, with the Great Lakes cut out using Natural Earth's lakes | `npm run data:regions` writes `src/data/regions.json` |
+| US states, Canadian provinces | Natural Earth 50m admin-1, kept exactly as supplied | `npm run data:regions` writes `src/data/regions.json` |
 | National parks | Wikidata | `npm run data:parks` writes `src/data/parks.json` |
-| Shapes ready to draw | The country, state and park data above | `npm run data:map` writes `src/data/map.json` |
+| Shapes ready to draw, and the Great Lakes | The country, state and park data above, plus Natural Earth's 50m lakes | `npm run data:map` writes `src/data/map.json` |
 | State and province flags | Wikimedia Commons | `npm run data:flags` writes `public/flags/regions/*.png` |
 | Park photos and credits | Wikimedia Commons | `npm run data:images` writes `public/parks/*` and `src/data/parkImages.json` |
 
