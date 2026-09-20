@@ -37,5 +37,8 @@ export function useVisited() {
 
   const clear = useCallback(() => setVisited(new Set()), [])
 
-  return { visited, set, clear }
+  /** Throw away the current places and use exactly these instead. */
+  const replace = useCallback((keys: Iterable<string>) => setVisited(new Set(keys)), [])
+
+  return { visited, set, clear, replace }
 }

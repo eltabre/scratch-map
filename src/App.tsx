@@ -1,13 +1,15 @@
-import { lazy, Suspense, useState, type CSSProperties } from 'react'
+import { lazy, Suspense, useEffect, useState, type CSSProperties } from 'react'
 import './App.css'
 import { COUNTRIES, PARKS, PARK_REGION, REGIONS, isCountryVisited } from '@/lib/geo'
 import ParksTab from '@/components/lists/ParksTab'
 import RegionsTab from '@/components/lists/RegionsTab'
 import WorldMap from '@/components/map/WorldMap'
+import SharedMapBanner from '@/components/SharedMapBanner'
 import TipHost from '@/components/Tooltip'
 import { TILE_SIZE, useTileSize } from '@/hooks/useTileSize'
 import { useVisited } from '@/hooks/useVisited'
 import { SCRATCH_MS } from '@/lib/scratch'
+import { readShared, shareUrl, type Decoded } from '@/lib/shareCode'
 
 // The country flags are a large chunk and only the Countries tab needs them, so
 // they load after the map has already appeared.
@@ -27,12 +29,22 @@ const PROVINCE_KEYS = keysOf(REGIONS.filter((r) => r.country === 'CA'))
 const PARK_KEYS = keysOf(PARKS)
 
 export default function App() {
-  const { visited, set, clear } = useVisited()
+  const { visited, set, clear, replace } = useVisited()
   const [hovered, setHovered] = useState<string | null>(null)
   const [tab, setTab] = useState<Tab>('countries')
   // Hiding the lists lets the map fill the screen.
   const [collapsed, setCollapsed] = useState(false)
   const [tileSize, setTileSize] = useTileSize()
+  // A map opened from a shared link, waiting for the visitor to decide what to do with it.
+  const [shared, setShared] = useState<Decoded | null>(readShared)
+  // A short message shown in the status line, e.g. after copying a link.
+  const [notice, setNotice] = useState<string | null>(null)
+
+  useEffect(() => {
+    const onHashChange = () => setShared(readShared())
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
   const [showParks, setShowParks] = useState(true)
   // Keys whose foil is still being scratched away on the map.
   const [scratching, setScratching] = useState<ReadonlySet<string>>(new Set())
@@ -72,6 +84,33 @@ export default function App() {
   ]
   const anything = stats.some((s) => s.done > 0)
 
+  function dismissShared() {
+    window.history.replaceState(null, '', window.location.pathname + window.location.search)
+    setShared(null)
+  }
+
+  function applySharedMap(mode: 'replace' | 'merge') {
+    if (shared?.ok) {
+      if (mode === 'replace') replace(shared.keys)
+      else set([...shared.keys], true)
+    }
+    dismissShared()
+  }
+
+  async function copyLink() {
+    const url = shareUrl(visited)
+    let message = 'Link copied to the clipboard'
+    try {
+      await navigator.clipboard.writeText(url)
+    } catch {
+      // Clipboard access can be blocked (insecure page, denied permission): let them copy it by hand.
+      window.prompt('Copy this link to share your map:', url)
+      message = 'Link ready to share'
+    }
+    setNotice(message)
+    setTimeout(() => setNotice(null), 2500)
+  }
+
   function handleReset() {
     if (window.confirm('Cover everything back up?')) clear()
   }
@@ -92,13 +131,26 @@ export default function App() {
         </dl>
       </header>
 
+      {shared && (
+        <SharedMapBanner
+          shared={shared}
+          hasOwn={visited.size > 0}
+          onReplace={() => applySharedMap('replace')}
+          onMerge={() => applySharedMap('merge')}
+          onDismiss={dismissShared}
+        />
+      )}
+
       <WorldMap visited={visited} scratching={scratching} showParks={showParks} fill={collapsed} onToggle={toggle} onHover={setHovered} />
 
       <div className="map-bar">
-        <p className="status">{hovered ?? 'Click to scratch a place off. Click again to cover it back up.'}</p>
+        <p className="status">{hovered ?? notice ?? 'Click to scratch a place off. Click again to cover it back up.'}</p>
         <label className="parks-toggle">
           <input type="checkbox" checked={showParks} onChange={(e) => setShowParks(e.target.checked)} /> Parks
         </label>
+        <button type="button" className="reset" onClick={copyLink} disabled={!anything} title="Copy a link to this map">
+          Share
+        </button>
         <button type="button" className="reset" onClick={handleReset} disabled={!anything}>
           Reset
         </button>

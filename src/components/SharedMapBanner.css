@@ -1,0 +1,44 @@
+.shared-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  background: rgba(212, 169, 63, 0.1);
+}
+
+.shared-banner p {
+  margin: 0;
+}
+
+.shared-banner strong {
+  color: var(--gold);
+}
+
+.shared-banner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.shared-banner button {
+  padding: 5px 12px;
+  border: 1px solid #2c3037;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+}
+
+.shared-banner button:hover {
+  border-color: var(--gold);
+}
+
+.shared-banner button.primary {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: #14161a;
+}

@@ -16,6 +16,10 @@ browser.
   keyboard-friendly way to mark places. Counters in the header track progress.
 - **Size slider:** the Size slider above the lists scales the flags and park
   badges from about 0.6x to 2.2x, and is remembered between visits.
+- **Share your map:** the Share button copies a link (about 110 characters) that
+  carries your whole map in the part after the `#`, which is never sent to any
+  server. Opening a link shows a banner to load it, add it to your own map, or
+  ignore it, so a link can't silently overwrite your saved progress.
 - **Full-screen map:** click the open tab again, or the arrow at the right of the
   tab row, to hide the lists and let the map fill the screen.
 
@@ -52,9 +56,11 @@ src/
   components/
     map/                  WorldMap and its styles
     lists/                Countries, States & provinces and Parks tabs
+    SharedMapBanner.tsx   what to do with a map opened from a shared link
     Tooltip.tsx           shared hover tooltip
   hooks/                  useVisited (saved progress), useTileSize (list size)
-  lib/                    geo.ts builds every shape, region and park from the data
+  lib/                    geo.ts builds every shape, region and park from the data;
+                          shareCode.ts turns progress into a shareable link and back
   data/                   generated JSON (regions, parks, park photo credits)
 scripts/                  the data:* generators above
 ```

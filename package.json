@@ -11,7 +11,8 @@
     "data:regions": "node scripts/build-regions.mjs",
     "data:parks": "node scripts/build-parks.mjs",
     "data:flags": "node scripts/fetch-region-flags.mjs",
-    "data:images": "node scripts/build-park-images.mjs"
+    "data:images": "node scripts/build-park-images.mjs",
+    "data:order": "node scripts/build-key-order.mjs"
   },
   "dependencies": {
     "country-flag-icons": "^1.6.20",
